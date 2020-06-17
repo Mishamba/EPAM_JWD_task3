@@ -1,4 +1,7 @@
-package com.mishamba.day3.entity;
+package com.mishamba.day3.entity.basket;
+
+import com.mishamba.day3.entity.ball.Ball;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +17,7 @@ public class Basket {
         this.balls = new ArrayList<>();
     }
 
-    public void putBall(Ball ball, double capacityToSubtract) {
+    public void putBall(@NotNull Ball ball, double capacityToSubtract) {
         capacityLeft -= capacityToSubtract;
         weightLeft -= ball.getWeigh();
         balls.add(ball);

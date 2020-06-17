@@ -1,11 +1,11 @@
-package com.mishamba.day3.service.sessionservice;
+package com.mishamba.day3.service.process;
 
-import com.mishamba.day3.entity.Ball;
-import com.mishamba.day3.entity.Basket;
-import com.mishamba.day3.entity.ballconfiguration.BallColor;
+import com.mishamba.day3.entity.ball.Ball;
+import com.mishamba.day3.entity.basket.Basket;
+import com.mishamba.day3.entity.ball.configuration.BallColor;
 import org.jetbrains.annotations.NotNull;
 
-public class GetResult {
+public class ResultService {
     public int getQuantityBlueBalls(@NotNull Basket basket, BallColor color) {
         int quantity = 0;
         for (Ball ball : basket.getBalls()) {

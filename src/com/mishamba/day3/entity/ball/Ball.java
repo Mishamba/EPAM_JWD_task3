@@ -1,17 +1,18 @@
-package com.mishamba.day3.entity;
+package com.mishamba.day3.entity.ball;
 
-import com.mishamba.day3.entity.ballconfiguration.BallColor;
+import com.mishamba.day3.entity.ball.configuration.BallColor;
+import com.mishamba.day3.entity.ball.configuration.BallSize;
 import org.jetbrains.annotations.NotNull;
 
 public class Ball implements Comparable<Ball>{
     private final BallColor color;
     private final double weight;
-    private final double radius;
+    private final BallSize size;
 
-    public Ball(BallColor color, double weight, double radius) {
+    public Ball(BallColor color, double weight, BallSize size) {
         this.color = color;
         this.weight = weight;
-        this.radius = radius;
+        this.size = size;
     }
 
     public BallColor getColor() {
@@ -19,7 +20,7 @@ public class Ball implements Comparable<Ball>{
     }
 
     public double getRadius() {
-        return radius;
+        return size.getRadius();
     }
 
     public double getWeigh() {
@@ -44,25 +45,25 @@ public class Ball implements Comparable<Ball>{
     public int hashCode() {
         int prime = 62;
         int result = 1;
-        result = prime*result + color.getNumber();
+        result = prime*result + color.getPriority();
         result = (int) (prime*result + weight);
-        result =  (int) (prime*result + radius);
+        result =  (int) (prime*result + size.getRadius());
         return result;
     }
 
     @Override
     public int compareTo(@NotNull Ball ball) {
-        if (this.color.getNumber() < ball.color.getNumber()) {
+        if (this.color.getPriority() < ball.color.getPriority()) {
             return 1;
-        } else if (this.color.getNumber() > ball.color.getNumber()) {
+        } else if (this.color.getPriority() > ball.color.getPriority()) {
             return -1;
         } else if (this.weight > ball.weight) {
             return 1;
         } else if (this.weight < ball.weight) {
             return -1;
-        } else if (this.radius > ball.radius) {
+        } else if (this.size.getRadius() > ball.size.getRadius()) {
             return 1;
-        } else if (this.radius < ball.radius) {
+        } else if (this.size.getRadius() < ball.size.getRadius()) {
             return -1;
         }
 

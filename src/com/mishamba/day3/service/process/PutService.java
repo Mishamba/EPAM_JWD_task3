@@ -1,17 +1,21 @@
-package com.mishamba.day3.service.sessionservice;
+package com.mishamba.day3.service.process;
 
-import com.mishamba.day1.exception.ProgramException;
-import com.mishamba.day3.entity.Ball;
-import com.mishamba.day3.entity.Basket;
+import com.mishamba.day3.entity.ball.Ball;
+import com.mishamba.day3.entity.basket.Basket;
+import org.jetbrains.annotations.NotNull;
 
 public class PutService {
-    public void putBallInBasket(Ball ball, Basket basket) throws ProgramException {
+    public boolean putBallInBasket(@NotNull Ball ball, @NotNull Basket basket) {
+        boolean operationStatement;
         if (calculateCapacityToSubtract(ball.getRadius()) < basket.getCapacityLeft()
                 && ball.getWeigh() < basket.getWeighLeft()) {
             basket.putBall(ball, calculateCapacityToSubtract(ball.getRadius()));
+            operationStatement = true;
         } else {
-            throw new ProgramException("basket is full");
+            operationStatement = false;
         }
+
+        return operationStatement;
     }
 
     private double calculateCapacityToSubtract(double radius) {

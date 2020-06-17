@@ -1,8 +1,10 @@
 package mishamba.day3.service.create;
 
+import com.mishamba.day3.entity.ball.configuration.BallMaterial;
+import com.mishamba.day3.entity.ball.configuration.BallSize;
 import com.mishamba.day3.exception.ProgramException;
-import com.mishamba.day3.entity.Ball;
-import com.mishamba.day3.entity.ballconfiguration.BallColor;
+import com.mishamba.day3.entity.ball.Ball;
+import com.mishamba.day3.entity.ball.configuration.BallColor;
 import com.mishamba.day3.service.create.CreateService;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,25 +16,23 @@ public class CreateServiceTest {
     @DataProvider(name = "validBalls")
     public Object[][] validBalls() {
         return new Object[][] {
-                {new Ball(BallColor.BLACK, 15, 20),
+                {new Ball(BallColor.BLACK, 23, BallSize.M),
                         BallColor.BLACK, 15, 20},
-                {new Ball(BallColor.BLUE,  4,  10),
+                {new Ball(BallColor.BLUE,  4,  BallSize.XL),
                         BallColor.BLUE, 4, 10},
-                {new Ball(BallColor.GREEN, 20, 12),
+                {new Ball(BallColor.GREEN, 20, BallSize.SUPER_SIZE),
                         BallColor.GREEN, 20, 12}
         };
     }
 
     @Test(dataProvider = "validBalls")
     public void createBall_valid(Ball expected,
-                               BallColor color, double weight, double radius) {
+                                 BallColor color,
+                                 BallSize size,
+                                 BallMaterial material) {
         CreateService service = new CreateService();
-        try {
-            Ball actual = service.createBall(color, weight, radius);
-            assertEquals(actual, expected);
-        } catch (ProgramException ex) {
-            fail("got unexpected exception");
-        }
+        Ball actual = service.createBall(color, size, material);
+        assertEquals(actual, expected);
     }
 
     @DataProvider(name = "invalidBalls")

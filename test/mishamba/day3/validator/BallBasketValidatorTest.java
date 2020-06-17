@@ -1,12 +1,9 @@
 package mishamba.day3.validator;
 
-import com.mishamba.day3.entity.Ball;
-import com.mishamba.day3.entity.ballconfiguration.BallColor;
+import com.mishamba.day3.entity.ball.configuration.BallColor;
 import com.mishamba.day3.validator.BallBasketValidator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.nio.ReadOnlyBufferException;
 
 import static org.testng.Assert.*;
 
