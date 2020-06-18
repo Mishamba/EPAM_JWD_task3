@@ -12,6 +12,7 @@ import com.mishamba.day3.service.process.ResultService;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SessionService {
     public void start() throws ProgramException {
@@ -19,16 +20,17 @@ public class SessionService {
         Parser parser = new Parser();
 
         Path ballPath = Paths.get(
-                "/home/mishamba/java/EPAM_JWD_task3/data/ballData.txt");
-        String[] ballCharacteristics = ballBasketReader.getBallLines(ballPath);
+                "/home/mishamba/java/EPAM_JWD_task3/data/ballData");
+        List<String> ballCharacteristics = ballBasketReader.getLines(ballPath, "for balls");
         ArrayList<Ball> balls = new ArrayList<>();
         for (String line : ballCharacteristics) {
             balls.add(parser.parseStringToBall(line));
         }
 
-        Path basketPath = Paths.get("data/basketData.txt");
-        String[] basketCharacteristics = ballBasketReader.
-                getBasketLines(basketPath);
+        Path basketPath = Paths.get(
+                "/home/mishamba/java/EPAM_JWD_task3/data/basketData");
+        List<String> basketCharacteristics = ballBasketReader.
+                getLines(basketPath, "for basket");
         ArrayList<Basket> baskets = new ArrayList<>();
         for (String line : basketCharacteristics) {
             baskets.add(parser.parseStringToBasket(line));

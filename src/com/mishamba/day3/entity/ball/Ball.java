@@ -69,4 +69,13 @@ public class Ball implements Comparable<Ball>{
 
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "Ball{" +
+                "color=" + color +
+                ", weight=" + weight +
+                ", size=" + size +
+                '}';
+    }
 }
