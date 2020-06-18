@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class BallBasketReader {
     public List<String> getLines(Path path, String target) {
-        if (path == null) {
+        if (path == null) { // TODO: 6/18/20  
             throw new RuntimeException("no path");
         }
 

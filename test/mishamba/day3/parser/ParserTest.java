@@ -1,16 +1,18 @@
-package com.mishamba.day3.parser;
+package mishamba.day3.parser;
 
 import com.mishamba.day3.entity.ball.Ball;
 import com.mishamba.day3.entity.ball.configuration.BallColor;
 import com.mishamba.day3.entity.ball.configuration.BallSize;
 import com.mishamba.day3.entity.basket.Basket;
 import com.mishamba.day3.exception.ProgramException;
+import com.mishamba.day3.parser.Parser;
+
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+        import static org.testng.Assert.*;
 
 public class ParserTest {
 
