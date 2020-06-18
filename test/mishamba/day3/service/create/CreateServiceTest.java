@@ -2,10 +2,13 @@ package mishamba.day3.service.create;
 
 import com.mishamba.day3.entity.ball.configuration.BallMaterial;
 import com.mishamba.day3.entity.ball.configuration.BallSize;
-import com.mishamba.day3.exception.ProgramException;
 import com.mishamba.day3.entity.ball.Ball;
 import com.mishamba.day3.entity.ball.configuration.BallColor;
+import com.mishamba.day3.entity.basket.Basket;
+import com.mishamba.day3.exception.ProgramException;
 import com.mishamba.day3.service.create.CreateService;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -13,8 +16,9 @@ import static org.testng.Assert.*;
 
 public class CreateServiceTest {
 
+    @Contract(" -> new")
     @DataProvider(name = "validBalls")
-    public Object[][] validBalls() {
+    private Object[] @NotNull [] validBalls() {
         return new Object[][] {
                 {new Ball(BallColor.BLACK, 23, BallSize.M),
                         BallColor.BLACK, 15, 20},
@@ -35,23 +39,46 @@ public class CreateServiceTest {
         assertEquals(actual, expected);
     }
 
-    @DataProvider(name = "invalidBalls")
-    public Object[][] invalidBalls() {
+    @Contract(" -> new")
+    @DataProvider(name = "validBaskets")
+    private Object[] @NotNull [] validBaskets() {
         return new Object[][] {
-                {BallColor.GREEN, 835, 2326},
-                {BallColor.BLUE, 2, 2164},
-                {BallColor.WHITE, 642, 10}
+                {new Basket(100, 50), 100, 50},
+                {new Basket(150, 60), 150, 60},
+                {new Basket(200, 70), 250, 70},
+                {new Basket(250, 75), 250, 75}
         };
     }
 
-    @Test(dataProvider = "invalidBalls", expectedExceptions = ProgramException.class)
-    public void createBall_invalid(BallColor color, double weight, double radius)
-    throws ProgramException{
+    @Test(dataProvider = "validBaskets")
+    public void createBasket_valid(Basket expected,
+                                   int capacity, int maxWeight ) {
         CreateService service = new CreateService();
-        service.createBall(color, weight, radius);
+        try {
+            Basket actual = service.createBasket(capacity, maxWeight);
+            assertEquals(actual, expected);
+        } catch (ProgramException ex) {
+            fail("got exception");
+        }
     }
 
-    @Test
-    public void testCreateBasket() {
+    @Contract(value = " -> new", pure = true)
+    @DataProvider(name = "invalidBaskets")
+    private Object[] @NotNull [] invalidBaskets() {
+        return new Object[][] {
+                {-1, 40},
+                {4, 100},
+                {10, -45},
+                {350, 85},
+                {-10, -10}
+        };
+    }
+
+    @Test(dataProvider = "invalidBaskets",
+            expectedExceptions = ProgramException.class)
+    public void createBaskets_invalid(int capacity, int maxWeight)
+            throws ProgramException {
+        CreateService service = new CreateService();
+        service.createBasket(capacity, maxWeight);
     }
 }

@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Basket {
-    private double capacityLeft;
-    private double weightLeft;
+    private int capacityLeft;
+    private int weightLeft;
     private final ArrayList<Ball> balls;
 
-    public Basket(double capacityLeft, double maxWeigh) {
+    public Basket(int capacityLeft, int maxWeigh) {
         this.capacityLeft = capacityLeft;
         this.weightLeft = maxWeigh;
         this.balls = new ArrayList<>();
@@ -23,11 +23,11 @@ public class Basket {
         balls.add(ball);
     }
 
-    public double getCapacityLeft() {
+    public int getCapacityLeft() {
         return capacityLeft;
     }
 
-    public double getWeighLeft() {
+    public int getWeighLeft() {
         return weightLeft;
     }
 
@@ -51,8 +51,8 @@ public class Basket {
             for (int i = 0; i < balls.size(); i++) {
                 ballsCompare += balls.get(i).compareTo(basket.balls.get(i));
             }
-            return Double.compare(basket.getCapacityLeft(), getCapacityLeft()) == 0 &&
-                    Double.compare(basket.getWeighLeft(), getWeighLeft()) == 0 &&
+            return basket.getCapacityLeft() == getCapacityLeft() &&
+                    basket.getWeighLeft() == getWeighLeft() &&
                     ballsCompare == 0;
         }
     }

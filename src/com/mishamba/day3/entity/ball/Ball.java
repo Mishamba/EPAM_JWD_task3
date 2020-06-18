@@ -6,10 +6,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class Ball implements Comparable<Ball>{
     private final BallColor color;
-    private final double weight;
+    private final int weight;
     private final BallSize size;
 
-    public Ball(BallColor color, double weight, BallSize size) {
+    public Ball(BallColor color, int weight, BallSize size) {
         this.color = color;
         this.weight = weight;
         this.size = size;
@@ -19,11 +19,11 @@ public class Ball implements Comparable<Ball>{
         return color;
     }
 
-    public double getRadius() {
+    public int getRadius() {
         return size.getRadius();
     }
 
-    public double getWeigh() {
+    public int getWeigh() {
         return weight;
     }
 
@@ -46,8 +46,8 @@ public class Ball implements Comparable<Ball>{
         int prime = 62;
         int result = 1;
         result = prime*result + color.getPriority();
-        result = (int) (prime*result + weight);
-        result =  (int) (prime*result + size.getRadius());
+        result = prime*result + weight;
+        result = prime*result + size.getRadius();
         return result;
     }
 

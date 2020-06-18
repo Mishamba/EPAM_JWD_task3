@@ -10,14 +10,14 @@ import com.mishamba.day3.service.create.CreateService;
 import org.jetbrains.annotations.NotNull;
 
 public class Parser {
-    public Ball parseStringToBall(String line) {
+    public Ball parseStringToBall(@NotNull String line) {
         CreateService service = new CreateService();
         String[] config = line.split(" ");
         return service.createBall(parseColor(config[0]),
                 parseSize(config[1]), parseMaterial(config[2]));
     }
 
-    public Basket parseStringToBasket(String line)
+    public Basket parseStringToBasket(@NotNull String line)
             throws ProgramException {
         String[] config = line.split(" ");
         CreateService service = new CreateService();

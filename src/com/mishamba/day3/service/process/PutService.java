@@ -22,6 +22,6 @@ public class PutService {
         double cubeVolume = 8 * Math.pow(radius, 3);
         double ballVolume = 4F/3*Math.PI*Math.pow(radius, 3);
 
-        return (cubeVolume - ballVolume) + ballVolume;
+        return (cubeVolume - ballVolume)/2 + ballVolume;
     }
 }
