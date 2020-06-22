@@ -8,7 +8,7 @@ import static org.testng.Assert.*;
 
 public class SessionServiceTest {
 
-    @Test
+    @Test(groups = "main")
     public void start_noException() {
         SessionService service = new SessionService();
         try {

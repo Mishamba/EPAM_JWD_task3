@@ -9,12 +9,7 @@ import java.util.stream.Stream;
 
 public class BallBasketReader {
     public List<String> getLines(Path path, String target) {
-        if (path == null) { // TODO: 6/18/20  
-            throw new RuntimeException("no path");
-        }
-
-        try {
-            Stream<String> lines = Files.lines(path);
+        try (Stream<String> lines = Files.lines(path)) {
             return lines.collect(Collectors.toList());
         } catch (IOException e) {
             System.out.println("can't get data " + target);

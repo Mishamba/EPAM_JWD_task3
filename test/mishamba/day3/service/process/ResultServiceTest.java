@@ -30,7 +30,7 @@ public class ResultServiceTest {
         return baskets;
     }
 
-    @Test(dataProvider = "basketsWithBalls")
+    @Test(dataProvider = "basketsWithBalls", groups = "valid")
     public void testGetQuantityBlueBalls(Basket basket) {
         ResultService service = new ResultService();
         int actual = service.getQuantityBlueBalls(basket, BallColor.BLUE);
@@ -38,7 +38,7 @@ public class ResultServiceTest {
         assertEquals(actual, expected);
     }
 
-    @Test(dataProvider = "basketsWithBalls")
+    @Test(dataProvider = "basketsWithBalls", groups = "valid")
     public void testGetBasketWeight(Basket basket) {
         ResultService service = new ResultService();
         double actual = service.getBasketWeight(basket);

@@ -29,7 +29,7 @@ public class CreateServiceTest {
         };
     }
 
-    @Test(dataProvider = "validBalls")
+    @Test(dataProvider = "validBalls", groups = "valid")
     public void createBall_valid(Ball expected,
                                  BallColor color,
                                  BallSize size,
@@ -50,7 +50,7 @@ public class CreateServiceTest {
         };
     }
 
-    @Test(dataProvider = "validBaskets")
+    @Test(dataProvider = "validBaskets", groups = "valid")
     public void createBasket_valid(Basket expected,
                                    int capacity, int maxWeight ) {
         CreateService service = new CreateService();
@@ -75,7 +75,7 @@ public class CreateServiceTest {
     }
 
     @Test(dataProvider = "invalidBaskets",
-            expectedExceptions = ProgramException.class)
+            expectedExceptions = ProgramException.class, groups = "invalid")
     public void createBaskets_invalid(int capacity, int maxWeight)
             throws ProgramException {
         CreateService service = new CreateService();

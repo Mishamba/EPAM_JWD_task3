@@ -43,6 +43,7 @@ public class Basket {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+
         Basket basket = (Basket) o;
         int ballsCompare = 0;
         if (this.balls.size() > basket.balls.size()) {

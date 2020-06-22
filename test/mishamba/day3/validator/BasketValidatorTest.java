@@ -17,7 +17,7 @@ public class BasketValidatorTest {
         };
     }
 
-    @Test(dataProvider = "validBaskets")
+    @Test(dataProvider = "validBaskets", groups = "valid")
     public void correctBasketData_valid(double capacity, double maxWeight) {
         BasketValidator validator = new BasketValidator();
         boolean actual = validator.correctBasketData(capacity, maxWeight);
@@ -33,7 +33,7 @@ public class BasketValidatorTest {
         };
     }
 
-    @Test(dataProvider = "invalidBaskets")
+    @Test(dataProvider = "invalidBaskets", groups = "invalid")
     public void correctBasketData_invalid(double capacity, double maxWeight) {
         BasketValidator validator = new BasketValidator();
         boolean actual = validator.correctBasketData(capacity, maxWeight);

@@ -17,7 +17,7 @@ public class Finder {
         Parser parser = new Parser();
 
         Path ballPath = Paths.get(
-                "/home/mishamba/java/EPAM_JWD_task3/data/ballData");
+                "data/ballData");
         List<String> ballCharacteristics = ballBasketReader.getLines(ballPath,
                 "for balls");
         ArrayList<Ball> balls = new ArrayList<>();
@@ -33,7 +33,7 @@ public class Finder {
         Parser parser = new Parser();
 
         Path basketPath = Paths.get(
-                "/home/mishamba/java/EPAM_JWD_task3/data/basketData");
+                "data/basketData");
         List<String> basketCharacteristics = ballBasketReader.
                 getLines(basketPath, "for basket");
         ArrayList<Basket> baskets = new ArrayList<>();

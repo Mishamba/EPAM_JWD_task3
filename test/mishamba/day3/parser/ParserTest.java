@@ -29,7 +29,7 @@ public class ParserTest {
         };
     }
 
-    @Test(dataProvider = "ballsData")
+    @Test(dataProvider = "ballsData", groups = "valid")
     public void testParseStringToBall(Ball expected, String source) {
         Parser parser = new Parser();
         Ball actual = parser.parseStringToBall(source);
@@ -45,7 +45,7 @@ public class ParserTest {
         };
     }
 
-    @Test(dataProvider = "basketsData")
+    @Test(dataProvider = "basketsData", groups = "valid")
     public void testParseStringToBasket(Basket expected, String source) {
         Parser parser = new Parser();
         try {

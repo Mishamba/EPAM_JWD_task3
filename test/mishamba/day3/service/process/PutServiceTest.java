@@ -27,7 +27,7 @@ public class PutServiceTest {
         };
     }
 
-    @Test(dataProvider = "emptyBaskets")
+    @Test(dataProvider = "emptyBaskets", groups = "valid")
     public void putBallInBasket_true(Ball ball, Basket basket) {
         PutService service = new PutService();
         boolean statement = service.putBallInBasket(ball, basket);
@@ -47,7 +47,7 @@ public class PutServiceTest {
         };
     }
 
-    @Test(dataProvider = "fullBaskets")
+    @Test(dataProvider = "fullBaskets", groups = "valid")
     public void putBallInBasket_false(Ball ball, Basket basket) {
         PutService service = new PutService();
         assertFalse(service.putBallInBasket(ball, basket));
